@@ -1,0 +1,637 @@
+\documentclass[14pt,a4paper]{extarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools,tikz,subcaption,float}
+\setlength{\topmargin}{-1.5cm}
+\setlength{\textheight}{23.3cm}
+\setlength{\oddsidemargin}{-0.5cm}
+\setlength{\textwidth}{17.0cm}
+\newcommand{\V}[1]{\mbox{\boldmath$#1$}}
+\newcommand{\T}[1]{\mbox{\bf#1}}
+\DeclareUnicodeCharacter{2061}{}
+\usepackage{graphicx}
+\graphicspath{ {./images} }
+\usepackage{wrapfig}
+\textheight=240mm
+\usepackage{mathtools}
+\pagestyle{empty}
+\setlength\parindent{12.5mm}
+\usepackage{tocloft}
+\renewcommand{\cfttoctitlefont}{\normalsize\bfseries}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}%простые разреженные отточия
+\renewcommand{\cftsecfont}{\normalsize}
+\renewcommand\cftsecpagefont{\normalfont}
+\renewcommand{\baselinestretch}{1.25}
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\normalsize\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries}{\thesection}{1em}{}
+\usepackage{tocloft}
+\renewcommand{\cfttoctitlefont}{\normalsize\bfseries}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}%простые разреженные отточия
+\renewcommand{\cftsecfont}{\normalsize}
+\renewcommand\cftsecpagefont{\normalfont}
+
+
+\begin{document}
+
+
+
+\thispagestyle{empty}
+\begin{center}
+\small{МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ}\par
+\small{РОССИЙСКОЙ ФЕДЕРАЦИИ}\par
+\small{ФЕДЕРАЛЬНОЕ ГОСУДАРСТВЕННОЕ АВТОНОМНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ВЫСШЕГО ОБРАЗОВАНИЯ}\par
+\small{<<ЮЖНЫЙ ФЕДЕРАЛЬНЫЙ УНИВЕРСИТЕТ>>}\par
+\normalsize{Институт математики механики и компьютерных наук им. И.\,И. Воровича}\par
+\end{center}
+
+
+\vspace*{5.0em plus 0.2em minus 0.2em}
+
+\begin{center}
+Методичка по игре в го
+\end{center}
+
+\begin{center}
+для начинающих.
+\end{center}
+
+\begin{center}
+Часть 1?
+\end{center}
+
+\vspace*{5.0em plus 0.2em minus 0.2em}
+\begin{flushright}
+ Выполнил(и):\\
+	...
+\end{flushright}
+
+
+
+
+
+
+\vspace*{\fill}
+
+\begin{center}
+г. Ростов-на-Дону, 2023
+\end{center}
+
+\newpage
+\thispagestyle{empty}
+\tableofcontents
+
+
+\newpage
+
+\section*{Предисловие.}\addcontentsline{toc}{section}{Предисловие}
+\
+
+\newpage
+
+\section*{Основы игры.}\addcontentsline{toc}{section}{Основы игры}
+
+\subsection*{Правила игры.}\addcontentsline{toc}{subsection}{Правила игры}
+\
+
+Для игры понадобятся доска $9\times9$, $13\times13$, $15\times15$, или $19\times19$ (доски поменьше обычно подходят для начинающих игроков) и два набора камней разных цветов (обычно чёрного и белого).
+
+Рассмотрм 5 базовых правил го.
+\\
+
+
+\textit{Правило 1.} О постановке камней на доску.
+
+Чёрные и белые ходят по очереди. Начинают партию чёрные с пустой доски. Каждым своим ходом игроки могут поставить камень своего цвета на доску или сказать "пас". Камни ставятся на пересечение линий, называемое пунктом, и не могут быть потом передвинуты (лишь только сняты, но об этом позже).
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+\draw [step=1,gray] (0,0) grid (5.5,5.5);
+\draw[black,ultra thick](0,0) -- (5.5,0);
+\draw[black,ultra thick](0,0) -- (0,5.5);
+\filldraw[color=black, fill=black, very thick](4,3) circle (0.45);
+\filldraw[color=black, fill=white, very thick](2,1) circle (0.45);
+\filldraw[color=black, fill=black, very thick](1,1) circle (0.45);
+\filldraw[color=black, fill=white, very thick](2,4) circle (0.45);
+\filldraw[color=black, fill=black, very thick](0,4) circle (0.45);
+\end{tikzpicture}
+\caption{Просто какая-то расстановка камней на фрагменте доски.} \label{1}
+\end{figure}
+
+\textit{Правило 2.} О дыханиях и снятии камней с доски.
+
+Под дыханиями (или степенями свободы, или дамэ) камня будем понимать все соседние по стороне пункты, не занятые камнями.
+
+\newpage
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\draw [step=1,gray] (0,0) grid (5.5,5.45);
+\draw[black,ultra thick](0,0) -- (5.5,0);
+\draw[black,ultra thick](0,0) -- (0,5.5);
+\filldraw[color=black, fill=black, very thick](0,0) circle (0.45);
+\filldraw[color=black, fill=black, thick](0,1) circle (0.125);
+\filldraw[color=black, fill=black, thick](1,0) circle (0.125);
+\filldraw[color=black, fill=black, very thick](4,0) circle (0.45);
+\filldraw[color=black, fill=black, thick](5,0) circle (0.125);
+\filldraw[color=black, fill=black, thick](3,0) circle (0.125);
+\filldraw[color=black, fill=black, thick](4,1) circle (0.125);
+\filldraw[color=black, fill=black, very thick](3,3) circle (0.45);
+\filldraw[color=black, fill=black, thick](3,2) circle (0.125);
+\filldraw[color=black, fill=black, thick](3,4) circle (0.125);
+\filldraw[color=black, fill=black, thick](2,3) circle (0.125);
+\filldraw[color=black, fill=black, thick](4,3) circle (0.125);
+\end{tikzpicture}
+\caption{Дыхания камней.} \label{2}
+\end{figure}
+
+Говорят, что камни одного цвета образуют группу камней, если они соединены по стороне. Тогда будем считать, что у группы камней общие дыхания.
+
+\begin{figure}[h!]
+    \centering
+    
+    \begin{subfigure}[t]{0.35\textwidth}
+    \begin{tikzpicture}
+    \draw [step=1,gray] (0,0) grid (5.5,5.45);
+    \draw[black,ultra thick](0,0) -- (5.5,0);
+    \draw[black,ultra thick](0,0) -- (0,5.5);
+    \filldraw[color=black, fill=black, very thick](3,3) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](3,4) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](3,2) circle (0.45);
+    \filldraw[color=black, fill=black, thick](2,3) circle (0.125);
+    \filldraw[color=black, fill=black, thick](2,4) circle (0.125);
+    \filldraw[color=black, fill=black, thick](2,2) circle (0.125);
+    \filldraw[color=black, fill=black, thick](4,3) circle (0.125);
+    \filldraw[color=black, fill=black, thick](4,2) circle (0.125);
+    \filldraw[color=black, fill=black, thick](4,4) circle (0.125);
+    \filldraw[color=black, fill=black, thick](3,1) circle (0.125);
+    \filldraw[color=black, fill=black, thick](3,5) circle (0.125);
+    \end{tikzpicture}
+    \caption{Дыхания группы камней.} 
+    \label{3a}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.32\textwidth}
+    \begin{tikzpicture}
+    \draw [step=1,gray] (0,0) grid (4.5,5.5);
+    \draw[black,ultra thick](0,0) -- (4.5,0);
+    \draw[black,ultra thick](0,0) -- (0,5.5);
+    \filldraw[color=black, fill=black, very thick](0,3) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](0,4) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](1,3) circle (0.45);
+    \filldraw[color=black, fill=black, thick](0,2) circle (0.125);
+    \filldraw[color=black, fill=black, thick](1,2) circle (0.125);
+    \filldraw[color=black, fill=black, thick](2,3) circle (0.125);
+    \filldraw[color=black, fill=black, thick](1,4) circle (0.125);
+    \filldraw[color=black, fill=black, thick](0,5) circle (0.125);
+    \end{tikzpicture}
+    \caption{Дыхания группы камней.} 
+    \label{3b}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.27\textwidth}
+    \begin{tikzpicture}
+    \draw [step=1,gray] (0,0) grid (3.5,5.5);
+    \draw[black,ultra thick](0,0) -- (3.5,0);
+    \draw[black,ultra thick](0,0) -- (0,5.5);
+    \filldraw[color=black, fill=black, very thick](1,3) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](2,4) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](2,2) circle (0.45);
+    \end{tikzpicture}
+    \caption{Не группа камней! Это просто 3~камня.} 
+    \label{3c}
+    \end{subfigure}
+    \caption{}
+\end{figure}
+
+Если камень или группа камней лишаетяся всех дыханий, то эти камни снимаются с доски и попадают во вражеский плен.
+\newpage
+\begin{figure}[h!]
+\centering
+\begin{subfigure}[t]{0.4\textwidth}
+\begin{tikzpicture}
+\draw [step=1,gray] (0,0) grid (5.5,5.5);
+\draw[black,ultra thick](0,0) -- (5.5,0);
+\draw[black,ultra thick](0,0) -- (0,5.5);
+
+\filldraw[color=black, fill=black!60, very thick](3,3) circle (0.45);
+\filldraw[color=black, fill=white, very thick](3,2) circle (0.45);
+\filldraw[color=black, fill=white, very thick](3,4) circle (0.45);
+\filldraw[color=black, fill=white, very thick](2,3) circle (0.45);
+\filldraw[color=black, fill=white, very thick](4,3) circle (0.45);
+\end{tikzpicture}
+\caption{}
+\label{4a}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.4\textwidth}
+    \begin{tikzpicture}
+    \draw [step=1,gray] (0,0) grid (5.5,5.5);
+    \draw[black,ultra thick](0,0) -- (5.5,0);
+    \draw[black,ultra thick](0,0) -- (0,5.5);
+    \filldraw[color=black, fill=black!60, very thick](3,3) circle (0.45);
+    \filldraw[color=black, fill=black!60, very thick](3,4) circle (0.45);
+    \filldraw[color=black, fill=black!60, very thick](3,2) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](2,3) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](2,4) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](2,2) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](4,3) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](4,2) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](4,4) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](3,1) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](3,5) circle (0.45);
+    \end{tikzpicture}
+    \caption{}
+\label{4b}
+    \end{subfigure}
+\caption{Убитые камни или группы камней.}
+\label{4}
+\end{figure}
+
+\textit{Правило 3.} О запрещённом ходе и исключении и этого правила.
+
+Представим, какая позиция осталась на рис \ref{4a} после снятия чёрного камня. Поймём, что если вдруг чёрные захотят поставить камень на то же место, то он уже будет лишён всех дыханий.
+Согласно правилам го, запрещено делать самоубийсвенный ход.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\draw [step=1,gray] (0,0) grid (5.5,5.5);
+\draw[black,ultra thick](0,0) -- (5.5,0);
+\draw[black,ultra thick](0,0) -- (0,5.5);
+
+\filldraw[color=black, fill=black, very thick](3,3) circle (0.125);
+\filldraw[color=black, fill=white, very thick](3,2) circle (0.45);
+\filldraw[color=black, fill=white, very thick](3,4) circle (0.45);
+\filldraw[color=black, fill=white, very thick](2,3) circle (0.45);
+\filldraw[color=black, fill=white, very thick](4,3) circle (0.45);
+\end{tikzpicture}
+
+\caption{Пойдя в выделенный пункт, чёрные сразу лишат себя дыханий.}
+\label{5}
+\end{figure}
+
+К тому же запрещено делать ход, отбирающий у своей группы посленднюю степень свободы. На рис. \ref{6} при попытке чёрных поёти в выделенный пункт, образуется позиция, как на рис. \ref{4b}, что, как мы видим, лишает группу всех оставшихся чтепеней свободы.
+\newpage
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\draw [step=1,gray] (0,0) grid (5.5,5.5);
+    \draw[black,ultra thick](0,0) -- (5.5,0);
+    \draw[black,ultra thick](0,0) -- (0,5.5);
+    \filldraw[color=black, fill=black, very thick](3,3) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](3,4) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](3,2) circle (0.125);
+    \filldraw[color=black, fill=white, very thick](2,3) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](2,4) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](2,2) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](4,3) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](4,2) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](4,4) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](3,1) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](3,5) circle (0.45);
+\end{tikzpicture}
+
+\caption{Пойдя в выделенный пункт, чёрные отнимут последнее дыхание у группы.}
+\label{6}
+\end{figure}
+Теперь предположим, что в процессе игры, изображённой на рис. \ref{5} позиция преобразовалась к диаграмме \ref{7}. В этой, по правилам, уже можно сделать ход чёрным в выделенный пункт, т.к. белый камень 1 остаются без единой степени свободы. Иначе говоря, самоубийсвенный ход делать можно, если притом вражеский(е) камень(камни) лишаются последней степени свободы. И т.к. у поставленного чёрного камня уже будет дыхание, то он (пока что) будет поствлен.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\draw [step=1,gray] (0,0) grid (5.5,5.5);
+\draw[black,ultra thick](0,0) -- (5.5,0);
+\draw[black,ultra thick](0,0) -- (0,5.5);
+
+\filldraw[color=black, fill=black, very thick](3,3) circle (0.125);
+\filldraw[color=black, fill=white, very thick](3,2) circle (0.45);
+\node[] at (3,2) {1};
+\filldraw[color=black, fill=white, very thick](3,4) circle (0.45);
+\filldraw[color=black, fill=white, very thick](2,3) circle (0.45);
+\filldraw[color=black, fill=white, very thick](4,3) circle (0.45);
+\filldraw[color=black, fill=black, very thick](2,2) circle (0.45);
+\filldraw[color=black, fill=black, very thick](3,1) circle (0.45);
+\filldraw[color=black, fill=black, very thick](4,2) circle (0.45);
+\end{tikzpicture}
+
+\caption{Пойдя в выделенный пункт, чёрные лишат сначала белый камень 1 дыхания.}
+\label{7}
+\end{figure}
+
+\textit{Правило 4.} Правило ко.
+
+Пусть в позиции, изображённой на рис. \ref{7}, чёрные взяли белый камень, тогда заметим, что у этого чёрного камня осталось одно дыхание, и белые могут вернуть сразу же камень назад. И мы вновь вернулись к начальной позиции.
+
+\begin{figure}[h!]
+\centering
+
+\begin{subfigure}{0.4\textwidth}
+\begin{tikzpicture}
+    \draw [step=1,gray] (0,0) grid (7.5,7.5);
+    \draw[black,ultra thick](0,0) -- (7.5,0);
+    \draw[black,ultra thick](0,0) -- (0,7.5);
+    \filldraw[color=black, fill=black, very thick](3,3) circle (0.45);
+    \node[text=white] at (3,3) {1};
+    \filldraw[color=black, fill=white, very thick](3,4) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](2,3) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](4,3) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](2,2) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](3,1) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](4,2) circle (0.45);
+\end{tikzpicture}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.4\textwidth}
+\begin{tikzpicture}
+    \draw [step=1,gray] (0,0) grid (7.5,7.5);
+    \draw[black,ultra thick](0,0) -- (7.5,0);
+    \draw[black,ultra thick](0,0) -- (0,7.5);
+    \filldraw[color=black, fill=white, very thick](3,2) circle (0.45);
+    \node[] at (3,2) {2};
+    \filldraw[color=black, fill=white, very thick](3,4) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](2,3) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](4,3) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](2,2) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](3,1) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](4,2) circle (0.45);
+\end{tikzpicture}
+\end{subfigure}
+\caption{Повторение позиции.}
+\label{8}
+\end{figure}
+
+Для исключения бесконечного повторения позиции существует правило ко.
+Согласно ему, никакая позиция на доске в партии после непасового хода не может повториться.
+
+Например, в приведённой позиции партия модет пойти следующим образом, как на рис. \ref{9}
+
+\begin{figure}[H]
+\centering
+
+\begin{subfigure}[t]{0.4\textwidth}
+\begin{tikzpicture}[xscale=0.8,yscale=0.8]
+    \draw [step=1,gray] (0,0) grid (7.5,7.5);
+    \draw[black,ultra thick](0,0) -- (7.5,0);
+    \draw[black,ultra thick](0,0) -- (0,7.5);
+    \filldraw[color=black, fill=black, very thick](3,3) circle (0.45);
+    \node[text=white] at (3,3) {1};
+    \filldraw[color=black, fill=white, very thick](3,4) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](2,3) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](4,3) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](2,2) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](3,1) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](4,2) circle (0.45);
+\end{tikzpicture}
+\caption{Чёрные сняли камень.}
+\label{9a}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.4\textwidth}
+\begin{tikzpicture}[xscale=0.8,yscale=0.8]
+    \draw [step=1,gray] (0,0) grid (7.5,7.5);
+    \draw[black,ultra thick](0,0) -- (7.5,0);
+    \draw[black,ultra thick](0,0) -- (0,7.5);
+    \filldraw[color=black, fill=black, very thick](3,3) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](6,6) circle (0.45);
+    \node[] at (6,6) {2};
+    \filldraw[color=black, fill=white, very thick](3,4) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](2,3) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](4,3) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](2,2) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](3,1) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](4,2) circle (0.45);
+\end{tikzpicture}
+\caption{Белые не могут снять в ответ, поэтому пошли в другое место.}
+\label{9b}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.4\textwidth}
+\begin{tikzpicture}[xscale=0.8,yscale=0.8]
+    \draw [step=1,gray] (0,0) grid (7.5,7.5);
+    \draw[black,ultra thick](0,0) -- (7.5,0);
+    \draw[black,ultra thick](0,0) -- (0,7.5);
+    \filldraw[color=black, fill=black, very thick](3,3) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](6,6) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](7,5) circle (0.45);
+    \node[text=white] at (7,5) {3};
+    \filldraw[color=black, fill=white, very thick](3,4) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](2,3) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](4,3) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](2,2) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](3,1) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](4,2) circle (0.45);
+\end{tikzpicture}
+\caption{Пусть чёрным необходимо ответить на ход 2.}
+\label{9c}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.4\textwidth}
+\begin{tikzpicture}[xscale=0.8,yscale=0.8]
+    \draw [step=1,gray] (0,0) grid (7.5,7.5);
+    \draw[black,ultra thick](0,0) -- (7.5,0);
+    \draw[black,ultra thick](0,0) -- (0,7.5);
+    \filldraw[color=black, fill=white, very thick](3,2) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](6,6) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](7,5) circle (0.45);
+    \node[] at (3,2) {4};
+    \filldraw[color=black, fill=white, very thick](3,4) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](2,3) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](4,3) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](2,2) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](3,1) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](4,2) circle (0.45);
+\end{tikzpicture}
+\caption{Теперь белые могут снять камень, т.к. позиция изменилась.}
+\label{9d}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.4\textwidth}
+\begin{tikzpicture}[xscale=0.8,yscale=0.8]
+    \draw [step=1,gray] (0,0) grid (7.5,7.5);
+    \draw[black,ultra thick](0,0) -- (7.5,0);
+    \draw[black,ultra thick](0,0) -- (0,7.5);
+    \filldraw[color=black, fill=white, very thick](3,2) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](6,6) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](7,5) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](6,5) circle (0.45);
+    \node[text=white] at (6,5) {5};
+    \filldraw[color=black, fill=white, very thick](3,4) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](2,3) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](4,3) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](2,2) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](3,1) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](4,2) circle (0.45);
+\end{tikzpicture}
+\caption{Чёрные не могут снять в ответ, поэтому пошли в другое место.}
+\label{9e}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.4\textwidth}
+\begin{tikzpicture}[xscale=0.8,yscale=0.8]
+    \draw [step=1,gray] (0,0) grid (7.5,7.5);
+    \draw[black,ultra thick](0,0) -- (7.5,0);
+    \draw[black,ultra thick](0,0) -- (0,7.5);
+    \filldraw[color=black, fill=white, very thick](3,2) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](6,6) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](7,5) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](6,5) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](3,3) circle (0.45);
+    \node[] at (3,3) {6};
+    \filldraw[color=black, fill=white, very thick](3,4) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](2,3) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](4,3) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](2,2) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](3,1) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](4,2) circle (0.45);
+\end{tikzpicture}
+\caption{Белые решили соединить камни, не среагировав на ход 5.}
+\label{9f}
+\end{subfigure}
+\caption{Ко-борьба.}
+\label{9}
+\end{figure}
+
+Здесь правило ко опрелелено неклассическим образом, в виду некоторых сложных случаев, которые пока что рассматриваться не будут.
+
+\textit{Правило 5.} Территория, конец партии и подсчёт очков.
+
+Партия заканчивается, быть может за исключением некоторого числа сложных и редких случаев, после двух последовательных пасов.
+
+Под территорией будем понимать все не занятые камнями пункты, полностью окружённые камнями одного цвета. Это определение дано не полгостью и включает в себя ещё ряд важных аспектов, о которых будет сказано при решении задач. По большей части понятие территории являтся договорным, т.е. если оба игрока согласны, что определённая часть доски является территорией одного игрока, то так и будет считаться в итоговом результате. Пока что достаточно интуитивного понимания территории.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+    \draw [step=1,gray] (1,1) grid (11.5,11.5);
+    \draw[black,ultra thick](1,1) -- (11.5,1);
+    \draw[black,ultra thick](1,1) -- (1,11.5);
+    \filldraw[color=black, fill=black, very thick](1,1) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](2,2) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](3,3) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](3,2) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](1,3) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](2,3) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](3,1) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](1,2) circle (0.125);
+    \filldraw[color=black, fill=black, very thick](2,1) circle (0.125);
+
+    \filldraw[color=black, fill=white, very thick](3,6) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](3,8) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](2,7) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](4,7) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](3,7) circle (0.125);
+
+    \filldraw[color=black, fill=white, very thick](6,4) circle (0.125);
+    \filldraw[color=black, fill=white, very thick](6,5) circle (0.125);
+    \filldraw[color=black, fill=white, very thick](6,3) circle (0.125);
+    \filldraw[color=black, fill=white, very thick](5,4) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](5,5) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](5,3) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](7,4) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](7,3) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](7,5) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](6,2) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](6,6) circle (0.45);
+
+    \filldraw[color=black, fill=black, very thick](7,9) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](7,10) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](7,8) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](8,10) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](9,10) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](8,8) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](8,7) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](10,6) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](8,6) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](9,6) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](10,7) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](10,8) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](10,9) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](10,10) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](8,9) circle (0.125);
+    \filldraw[color=black, fill=black, very thick](9,9) circle (0.125);
+    \filldraw[color=black, fill=black, very thick](9,8) circle (0.125);
+    \filldraw[color=black, fill=black, very thick](9,7) circle (0.125);
+\end{tikzpicture}
+\caption{Территории.}
+\label{10}
+\end{figure}
+
+
+
+
+\newpage
+
+\subsection*{Задачи.}\addcontentsline{toc}{subsection}{Задачи}
+
+\
+
+
+Определить какие группы мертвы, т.е. у них не осталось степеней свободы.
+
+\noindent\textbf{1-I.}
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+    \draw [step=1,gray] (-0.5,-0.5) grid (7.5,7.5);
+    \filldraw[color=black, fill=black, very thick](3,3) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](4,3) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](2,3) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](3,2) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](4,2) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](2,2) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](3,4) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](2,4) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](4,4) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](1,3) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](5,3) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](3,5) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](2,5) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](4,5) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](5,4) circle (0.45);
+\end{tikzpicture}
+\end{figure}
+
+
+\newpage
+
+\section*{Пояснения и ответы к задачам первой части.}\addcontentsline{toc}{section}{Пояснения и ответы к задачам первой части}
+\subsection*{Основы игры.}\addcontentsline{toc}{subsection}{Основы игры}
+
+
+\noindent\textbf{1-I.}
+
+Группа чёрных камней лишена всех дыханий. Внимание, она не соединена с камнем 1!
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+    \draw [step=1,gray] (-0.5,-0.5) grid (7.5,7.5);
+    \filldraw[color=black, fill=black!60, very thick](3,3) circle (0.45);
+    \filldraw[color=black, fill=black!60, very thick](4,3) circle (0.45);
+    \filldraw[color=black, fill=black!60, very thick](2,3) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](3,2) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](4,2) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](2,2) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](3,4) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](2,4) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](4,4) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](1,3) circle (0.45);
+    \filldraw[color=black, fill=white, very thick](5,3) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](3,5) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](2,5) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](4,5) circle (0.45);
+    \filldraw[color=black, fill=black, very thick](5,4) circle (0.45);
+    \node[text=white] at (5,4){1};
+\end{tikzpicture}
+\end{figure}
+
+
+\newpage
+
+\section*{Ответы к задачам второй части.}\addcontentsline{toc}{section}{Ответы к задачам второй части}
+\subsection*{Основы игры.}\addcontentsline{toc}{subsection}{Основы игры}
+\end{document}
