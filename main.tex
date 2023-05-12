@@ -41,7 +41,7 @@
 \newcommand{\stonelabel}[4]{\node[text=#3] at (#1,#2) {#4};}
 
 \newenvironment{goboard}[2][7.5] {
-    \begin{figure}
+    \begin{figure}[h!]
     \centering
     \begin{tikzpicture}
     \draw [step=1, gray] (#2, #2) grid(#1, #1);
@@ -124,6 +124,10 @@
 \section*{Основы игры.}\addcontentsline{toc}{section}{Основы игры}
 
 \subsection*{Правила игры.}\addcontentsline{toc}{subsection}{Правила игры}
+\
+
+
+
 
 Для игры понадобится доска $9\times9$, $13\times13$, $15\times15$, или $19\times19$ (доски поменьше подходят для начинающих игроков) и два набора камней разных цветов (обычно чёрного и белого).
 
@@ -139,18 +143,18 @@
         \draw[step=1,gray] (0,0) grid (5.5,5.5);
         \draw[black,ultra thick](0,0) -- (5.5,0);
         \draw[black,ultra thick](0,0) -- (0,5.5);
-        \stone{3}{4}{black}
-        \stone{1}{2}{white}
+        \stone{4}{3}{black}
+        \stone{2}{1}{white}
         \stone{1}{1}{black}
-        \stone{4}{2}{white}
-        \stone{4}{0}{black}
+        \stone{2}{4}{white}
+        \stone{0}{4}{black}
     \end{tikzpicture}
     \caption{Просто какая-то расстановка камней на фрагменте доски.} \label{1}
 \end{figure}
 
 \textit{Правило 2.} О дыханиях и снятии камней с доски.
 
-Под дыханиями (или степенями свободы, или дамэ) камня (или группы камней, о ней далее) будем понимать все @соединенные@ с ним пункты, не занятые другими камнями. Внимание: пункты, расположенные от камня по диагонали, не считаются соседними с ним!
+Под дыханиями (или степенями свободы, или дамэ) камня (или группы камней, о ней далее) будем понимать все \textbf{соединенные} с ним пункты, не занятые другими камнями. Внимание: пункты, расположенные от камня по диагонали, не считаются соседними с ним!
 
 
 %%%%%%%%%%%%%%%%%
@@ -165,22 +169,22 @@
         \draw[black,ultra thick](0,0) -- (5.5,0);
         \draw[black,ultra thick](0,0) -- (0,5.5);
         \stone{0}{0}{black}
-        \territory{1}{0}{black}
         \territory{0}{1}{black}
-        \stone{1}{4}{white}
-        \stone{0}{4}{black}
-        \territory{0}{5}{black}
-        \territory{0}{3}{black}
+        \territory{1}{0}{black}
+        \stone{4}{1}{white}
+        \stone{4}{0}{black}
+        \territory{5}{0}{black}
+        \territory{3}{0}{black}
         \stone{3}{3}{black}
-        \territory{2}{3}{black}
-        \territory{4}{3}{black}
         \territory{3}{2}{black}
-    \territory{3}{4}{black}
+        \territory{3}{4}{black}
+        \territory{2}{3}{black}
+    \territory{4}{3}{black}
     \end{tikzpicture}
     \caption{Дыхания камней.} \label{2}
 \end{figure}
 
-Говорят, что камни одного цвета образуют группу камней, если они @соединены@ по стороне. У группы камней дыхания общие.
+Говорят, что камни одного цвета образуют группу камней, если они \textbf{соединены} по стороне. У группы камней дыхания общие.
 
 \begin{figure}[h!]
     \centering
@@ -190,16 +194,16 @@
         \draw[black,ultra thick](0,0) -- (5.5,0);
         \draw[black,ultra thick](0,0) -- (0,5.5);
         \stone{3}{3}{black}
-        \stone{4}{3}{black}
-        \stone{2}{3}{black}
-        \territory{3}{2}{black}
-        \territory{4}{2}{black}
-        \territory{2}{2}{black}
-        \territory{3}{4}{black}
+        \stone{3}{4}{black}
+        \stone{3}{2}{black}
+        \territory{2}{3}{black}
         \territory{2}{4}{black}
+        \territory{2}{2}{black}
+        \territory{4}{3}{black}
+        \territory{4}{2}{black}
         \territory{4}{4}{black}
-        \territory{1}{3}{black}
-        \territory{5}{3}{black}
+        \territory{3}{1}{black}
+        \territory{3}{5}{black}
     \end{tikzpicture}
     \caption{Дыхания группы камней.} 
     \label{3a}
@@ -210,14 +214,14 @@
         \draw [step=1,gray] (0,0) grid (4.5,5.5);
         \draw[black,ultra thick](0,0) -- (4.5,0);
         \draw[black,ultra thick](0,0) -- (0,5.5);
-        \stone{3}{0}{black}
-        \stone{4}{0}{black}
-        \stone{3}{1}{black}
-        \territory{2}{0}{black}
-        \territory{2}{1}{black}
-        \territory{3}{2}{black}
-        \territory{4}{1}{black}
-        \territory{5}{0}{black}
+        \stone{0}{3}{black}
+        \stone{0}{4}{black}
+        \stone{1}{3}{black}
+        \territory{0}{2}{black}
+        \territory{1}{2}{black}
+        \territory{2}{3}{black}
+        \territory{1}{4}{black}
+        \territory{0}{5}{black}
     \end{tikzpicture}
     \caption{Дыхания группы камней.} 
     \label{3b}
@@ -228,8 +232,8 @@
         \draw [step=1,gray] (0,0) grid (3.5,5.5);
         \draw[black,ultra thick](0,0) -- (3.5,0);
         \draw[black,ultra thick](0,0) -- (0,5.5);
-        \stone{3}{1}{black}
-        \stone{4}{2}{black}
+        \stone{1}{3}{black}
+        \stone{2}{4}{black}
         \stone{2}{2}{black}
     \end{tikzpicture}
     \caption{Не группа камней! Это просто 3 камня.} 
@@ -254,10 +258,10 @@
         \draw[black,ultra thick](0,0) -- (5.5,0);
         \draw[black,ultra thick](0,0) -- (0,5.5);
         \stone{3}{3}{black!60}
-        \stone{2}{3}{white}
-        \stone{4}{3}{white}
         \stone{3}{2}{white}
         \stone{3}{4}{white}
+        \stone{2}{3}{white}
+        \stone{4}{3}{white}
     \end{tikzpicture}
     \caption{}
     \label{4a}
@@ -271,14 +275,14 @@
         \stone{3}{2}{black!60}
         \stone{3}{3}{black!60}
         \stone{3}{4}{black!60}
-        \stone{3}{2}{white}
-        \stone{4}{2}{white}
-        \stone{2}{2}{white}
-        \stone{3}{4}{white}
+        \stone{2}{3}{white}
         \stone{2}{4}{white}
+        \stone{2}{2}{white}
+        \stone{4}{3}{white}
+        \stone{4}{2}{white}
         \stone{4}{4}{white}
-        \stone{1}{3}{white}
-        \stone{5}{3}{white}
+        \stone{3}{1}{white}
+        \stone{3}{5}{white}
         \end{tikzpicture}
         \caption{}
         \label{4b}
@@ -299,10 +303,10 @@
         \draw[black,ultra thick](0,0) -- (5.5,0);
         \draw[black,ultra thick](0,0) -- (0,5.5);
         \territory{3}{3}{black}
-        \stone{2}{3}{white}
-        \stone{4}{3}{white}
         \stone{3}{2}{white}
         \stone{3}{4}{white}
+        \stone{2}{3}{white}
+        \stone{4}{3}{white}
     \end{tikzpicture}
     \caption{Пойдя в выделенный пункт, чёрные сразу лишат себя дыханий.}
     \label{5}
@@ -323,16 +327,16 @@
         \draw[black,ultra thick](0,0) -- (5.5,0);
         \draw[black,ultra thick](0,0) -- (0,5.5);
         \stone{3}{3}{black}
-        \stone{4}{3}{black}
-        \territory{2}{3}{black}
-        \stone{3}{2}{white}
-        \stone{4}{2}{white}
-        \stone{2}{2}{white}
-        \stone{3}{4}{white}
+        \stone{3}{4}{black}
+        \territory{3}{2}{black}
+        \stone{2}{3}{white}
         \stone{2}{4}{white}
+        \stone{2}{2}{white}
+        \stone{4}{3}{white}
+        \stone{4}{2}{white}
         \stone{4}{4}{white}
-        \stone{1}{3}{white}
-        \stone{5}{3}{white}
+        \stone{3}{1}{white}
+        \stone{3}{5}{white}
     \end{tikzpicture}
 
     \caption{Пойдя в выделенный пункт, чёрные отнимут последнее дыхание у группы.}
@@ -348,16 +352,16 @@
         \draw[black,ultra thick](0,0) -- (5.5,0);
         \draw[black,ultra thick](0,0) -- (0,5.5);
         \territory{3}{3}{black}
-        \stone{2}{3}{white}
-        \stonelabel{3}{2}{black}{1}
-        \stone{4}{3}{white}
         \stone{3}{2}{white}
+        \stonelabel{2}{3}{black}{1}
         \stone{3}{4}{white}
+        \stone{2}{3}{white}
+        \stone{4}{3}{white}
         \stone{2}{2}{black}
-        \stone{1}{3}{black}
-        \stone{2}{4}{black}
+        \stone{3}{1}{black}
+        \stone{4}{2}{black}
     \end{tikzpicture}
-    \caption{Пойдя в выделенный пункт, чёрные лишат сначала белый камень 1 дыхания.}
+    \caption{Пойдя в выделенный пункт, чёрные сначала лишат белый камень 1 дыхания.}
     \label{7}
 \end{figure}
 
@@ -374,12 +378,12 @@
         \draw[black,ultra thick](0,0) -- (0,7.5);
         \stone{3}{3}{black}
         \stonelabel{3}{3}{white}{1}
-        \stone{4}{3}{white}
-        \stone{3}{2}{white}
         \stone{3}{4}{white}
+        \stone{2}{3}{white}
+        \stone{4}{3}{white}
         \stone{2}{2}{black}
-        \stone{1}{3}{black}
-        \stone{2}{4}{black}
+        \stone{3}{1}{black}
+        \stone{4}{2}{black}
     \end{tikzpicture}
     \end{subfigure}
     \hfill
@@ -388,14 +392,14 @@
         \draw [step=1,gray] (0,0) grid (7.5,7.5);
         \draw[black,ultra thick](0,0) -- (7.5,0);
         \draw[black,ultra thick](0,0) -- (0,7.5);
-        \stone{2}{3}{white}
-        \stonelabel{2}{3}{black}{2}
-        \stone{4}{3}{white}
         \stone{3}{2}{white}
+        \stonelabel{3}{2}{black}{2}
         \stone{3}{4}{white}
+        \stone{2}{3}{white}
+        \stone{4}{3}{white}
         \stone{2}{2}{black}
-        \stone{1}{3}{black}
-        \stone{2}{4}{black}
+        \stone{3}{1}{black}
+        \stone{4}{2}{black}
     \end{tikzpicture}
     \end{subfigure}
     \caption{Повторение позиции. Это может длится вечно...}
@@ -404,6 +408,7 @@
 
 Для исключения бесконечного повторения позиции существует правило ко.
 Согласно ему, никакая позиция на доске в партии после непасового хода не может повториться.
+Здесь правило ко опрелелено неклассическим образом, в виду некоторых сложных случаев, которые пока что рассматриваться не будут.
 
 Например, в приведённой позиции партия модет пойти следующим образом, как на рис. \ref{9}
 
@@ -417,12 +422,12 @@
         \draw[black,ultra thick](0,0) -- (0,7.5);
         \stone{3}{3}{black}
         \stonelabel{3}{3}{white}{1}
-        \stone{4}{3}{white}
-        \stone{3}{2}{white}
         \stone{3}{4}{white}
+        \stone{2}{3}{white}
+        \stone{4}{3}{white}
         \stone{2}{2}{black}
-        \stone{1}{3}{black}
-        \stone{2}{4}{black}
+        \stone{3}{1}{black}
+        \stone{4}{2}{black}
     \end{tikzpicture}
     \caption{Чёрные сняли камень.}
     \label{9a}
@@ -436,12 +441,12 @@
         \stone{3}{3}{black}
         \stone{6}{6}{white}
         \stonelabel{6}{6}{black}{2}
-        \stone{4}{3}{white}
-        \stone{3}{2}{white}
         \stone{3}{4}{white}
+        \stone{2}{3}{white}
+        \stone{4}{3}{white}
         \stone{2}{2}{black}
-        \stone{1}{3}{black}
-        \stone{2}{4}{black}
+        \stone{3}{1}{black}
+        \stone{4}{2}{black}
     \end{tikzpicture}
     \caption{Белые не могут снять в ответ, поэтому пошли в другое место.}
     \label{9b}
@@ -454,14 +459,14 @@
         \draw[black,ultra thick](0,0) -- (0,7.5);
         \stone{3}{3}{black}
         \stone{6}{6}{white}
-        \stone{5}{7}{black}
-        \stonelabel{5}{7}{white}{3}
-        \stone{4}{3}{white}
-        \stone{3}{2}{white}
+        \stone{7}{5}{black}
+        \stonelabel{7}{5}{white}{3}
         \stone{3}{4}{white}
+        \stone{2}{3}{white}
+        \stone{4}{3}{white}
         \stone{2}{2}{black}
-        \stone{1}{3}{black}
-        \stone{2}{4}{black}
+        \stone{3}{1}{black}
+        \stone{4}{2}{black}
     \end{tikzpicture}
     \caption{Пусть чёрным необходимо(*) ответить на ход 2.}
     \label{9c}
@@ -472,16 +477,16 @@
         \draw [step=1,gray] (0,0) grid (7.5,7.5);
         \draw[black,ultra thick](0,0) -- (7.5,0);
         \draw[black,ultra thick](0,0) -- (0,7.5);
-        \stone{2}{3}{white}
-        \stone{6}{6}{white}
-        \stone{5}{7}{black}
-        \stonelabel{3}{2}{black}{4}
-        \stone{4}{3}{white}
         \stone{3}{2}{white}
+        \stone{6}{6}{white}
+        \stone{7}{5}{black}
+        \stonelabel{2}{3}{black}{4}
         \stone{3}{4}{white}
+        \stone{2}{3}{white}
+        \stone{4}{3}{white}
         \stone{2}{2}{black}
-        \stone{1}{3}{black}
-        \stone{2}{4}{black}
+        \stone{3}{1}{black}
+        \stone{4}{2}{black}
     \end{tikzpicture}
     \caption{Теперь белые могут снять камень, т.к. позиция изменилась.}
     \label{9d}
@@ -492,17 +497,17 @@
         \draw [step=1,gray] (0,0) grid (7.5,7.5);
         \draw[black,ultra thick](0,0) -- (7.5,0);
         \draw[black,ultra thick](0,0) -- (0,7.5);
-        \stone{2}{3}{white}
-        \stone{6}{6}{white}
-        \stone{5}{7}{black}
-        \stone{5}{6}{black}
-        \stonelabel{5}{6}{white}{5}
-        \stone{4}{3}{white}
         \stone{3}{2}{white}
+        \stone{6}{6}{white}
+        \stone{7}{5}{black}
+        \stone{6}{5}{black}
+        \stonelabel{6}{5}{white}{5}
         \stone{3}{4}{white}
+        \stone{2}{3}{white}
+        \stone{4}{3}{white}
         \stone{2}{2}{black}
-        \stone{1}{3}{black}
-        \stone{2}{4}{black}
+        \stone{3}{1}{black}
+        \stone{4}{2}{black}
     \end{tikzpicture}
     \caption{Чёрные не могут снять в ответ, поэтому пошли в другое место.}
     \label{9e}
@@ -513,29 +518,29 @@
         \draw [step=1,gray] (0,0) grid (7.5,7.5);
         \draw[black,ultra thick](0,0) -- (7.5,0);
         \draw[black,ultra thick](0,0) -- (0,7.5);
-        \stone{2}{3}{white}
+        \stone{3}{2}{white}
         \stone{6}{6}{white}
-        \stone{5}{7}{black}
-        \stone{5}{6}{black}
+        \stone{7}{5}{black}
+        \stone{6}{5}{black}
         \stone{3}{3}{white}
         \stonelabel{3}{3}{black}{6}
-        \stone{4}{3}{white}
-        \stone{3}{2}{white}
         \stone{3}{4}{white}
+        \stone{2}{3}{white}
+        \stone{4}{3}{white}
         \stone{2}{2}{black}
-        \stone{1}{3}{black}
-        \stone{2}{4}{black}
+        \stone{3}{1}{black}
+        \stone{4}{2}{black}
     \end{tikzpicture}
     \caption{Белые решили соединить камни, не среагировав на ход 5.}
     \label{9f}
     \end{subfigure}
     \caption{Ко-борьба.}
+    \textit{
+    Сноска: В вынуждении противника сделать ответный ход состоит принцип Ко-борьбы. При ней игроки находят в позициях друг друга слабые места, чтобы вынудить противника ответить на свой ход и изменить позицию на доске чтобы затем передать данную эстафету оппоненту или извлечь себе некоторую выгоду, при отсутствии ответа. Умение находить уязвимости, на которые враг точно ответит и определение целесообразности Ко-борьбы - отдельное искусство.
+    }
     \label{9}
 \end{figure}
 
-Считаю, что нужно добавить сноску про ко-борьбу. Она будет гласить: В вынуждении противника сделать ответный ход состоит принцип Ко-борьбы. При ней игроки находят в позициях друг друга слабые места, чтобы вынудить противника ответить на свой ход и изменить позицию на доске чтобы затем передать данную эстафету оппоненту или извлечь себе некоторую выгоду, при отсутствии ответа. Умение находить уязвимости, на которые враг точно ответит и определение целесообразности Ко-борьбы - отдельное искусство.
-
-Здесь правило ко опрелелено неклассическим образом, в виду некоторых сложных случаев, которые пока что рассматриваться не будут.
 
 \textit{Правило 5.} Территория, конец партии и подсчёт очков.
 
@@ -552,49 +557,49 @@
     \stone{1}{1}{black}
     \stone{2}{2}{black}
     \stone{3}{3}{black}
-    \stone{2}{3}{black}
-    \stone{3}{1}{black}
     \stone{3}{2}{black}
     \stone{1}{3}{black}
-    \territory{2}{1}{black}
+    \stone{2}{3}{black}
+    \stone{3}{1}{black}
     \territory{1}{2}{black}
+    \territory{2}{1}{black}
 
-    \stone{6}{3}{white}
-    \stone{8}{3}{white}
-    \stone{7}{2}{white}
-    \stone{7}{4}{white}
-    \territory{7}{3}{white}
-
-    \territory{4}{6}{white}
-    \territory{5}{6}{white}
-    \territory{3}{6}{white}
-    \stone{4}{5}{white}
-    \stone{5}{5}{white}
-    \stone{3}{5}{white}
+    \stone{3}{6}{white}
+    \stone{3}{8}{white}
+    \stone{2}{7}{white}
     \stone{4}{7}{white}
-    \stone{3}{7}{white}
-    \stone{5}{7}{white}
-    \stone{2}{6}{white}
+    \territory{3}{7}{white}
+
+    \territory{6}{4}{white}
+    \territory{6}{5}{white}
+    \territory{6}{3}{white}
+    \stone{5}{4}{white}
+    \stone{5}{5}{white}
+    \stone{5}{3}{white}
+    \stone{7}{4}{white}
+    \stone{7}{3}{white}
+    \stone{7}{5}{white}
+    \stone{6}{2}{white}
     \stone{6}{6}{white}
 
-    \stone{9}{7}{black}
-    \stone{10}{7}{black}
-    \stone{8}{7}{black}
-    \stone{10}{8}{black}
-    \stone{10}{9}{black}
-    \stone{8}{8}{black}
-    \stone{7}{8}{black}
-    \stone{6}{10}{black}
-    \stone{6}{8}{black}
-    \stone{6}{9}{black}
+    \stone{7}{9}{black}
     \stone{7}{10}{black}
+    \stone{7}{8}{black}
     \stone{8}{10}{black}
     \stone{9}{10}{black}
+    \stone{8}{8}{black}
+    \stone{8}{7}{black}
+    \stone{10}{6}{black}
+    \stone{8}{6}{black}
+    \stone{9}{6}{black}
+    \stone{10}{7}{black}
+    \stone{10}{8}{black}
+    \stone{10}{9}{black}
     \stone{10}{10}{black}
-    \territory{9}{8}{black}
-    \territory{9}{9}{black}
     \territory{8}{9}{black}
-    \territory{7}{9}{black}
+    \territory{9}{9}{black}
+    \territory{9}{8}{black}
+    \territory{9}{7}{black}
 \end{tikzpicture}
 \caption{Территории.}
 \label{10}
@@ -609,60 +614,53 @@
 \subsection*{Задачи.}\addcontentsline{toc}{subsection}{Задачи}
 
 
+\noindent\textbf{1.1.}
 Определить какие группы мертвы, т.е. у них не осталось степеней свободы.
 
-
-\noindent\textbf{1-I.}
 \begin{goboard}{-0.5}
     \stone{3}{3}{black}
-    \stone{4}{3}{black}
-    \stone{2}{3}{black}
-    \stone{3}{2}{white}
-    \stone{4}{2}{white}
-    \stone{2}{2}{white}
-    \stone{3}{4}{white}
+    \stone{3}{4}{black}
+    \stone{3}{2}{black}
+    \stone{2}{3}{white}
     \stone{2}{4}{white}
+    \stone{2}{2}{white}
+    \stone{4}{3}{white}
+    \stone{4}{2}{white}
     \stone{4}{4}{white}
-    \stone{1}{3}{white}
-    \stone{5}{3}{white}
-    \stone{3}{5}{black}
-    \stone{2}{5}{black}
-    \stone{4}{5}{black}
+    \stone{3}{1}{white}
+    \stone{3}{5}{white}
+    \stone{5}{3}{black}
+    \stone{5}{2}{black}
     \stone{5}{4}{black}
+    \stone{4}{5}{black}
 \end{goboard}
-
 
 %%%%%%%%%%%%%%%%%
 \newpage
 %%%%%%%%%%%%%%%%%
 
-
+\section*{Ответы к задачам}\addcontentsline{toc}{section}{Ответы к задачам}
 \subsection*{Пояснения и ответы к задачам первой части.}\addcontentsline{toc}{subsection}{Пояснения и ответы к задачам первой части}
 
-\noindent\textbf{1-I.}
+\noindent\textbf{1.1.}
 Группа чёрных камней лишена всех дыханий. Внимание, она не соединена с камнем 1!
-\noindent\textbf{1-I.}
 \begin{goboard}{-0.5}
     \stone{3}{3}{black!60}
-    \stone{4}{3}{black!60}
-    \stone{2}{3}{black!60}
-    \stone{3}{2}{white}
-    \stone{4}{2}{white}
-    \stone{2}{2}{white}
-    \stone{3}{4}{white}
+    \stone{3}{4}{black!60}
+    \stone{3}{2}{black!60}
+    \stone{2}{3}{white}
     \stone{2}{4}{white}
+    \stone{2}{2}{white}
+    \stone{4}{3}{white}
+    \stone{4}{2}{white}
     \stone{4}{4}{white}
-    \stone{1}{3}{white}
-    \stone{5}{3}{white}
-    \stone{3}{5}{black}
-    \territory{3}{6}{black}
-    \territory{5}{6}{white}
-    \stone{4}{5}{black}
+    \stone{3}{1}{white}
+    \stone{3}{5}{white}
+    \stone{5}{3}{black}
     \stone{5}{4}{black}
-    \stone{2}{5}{black}
-    \stonelabel{2}{5}{white}{1}
-    \stonelabel{3}{5}{white}{2}
-    \stonelabel{4}{5}{white}{3}
+    \stone{4}{5}{black}
+    \stonelabel{4}{5}{white}{1}
+    \stone{5}{2}{black}
 \end{goboard}
 
 
@@ -671,6 +669,5 @@
 %%%%%%%%%%%%%%%%%
 
 
-\section*{Базовая тактика и стратегия}\addcontentsline{toc}{section}{Базовая тактика и стратегия}
-\section*{Ответы к задачам второй части.}\addcontentsline{toc}{section}{Ответы к задачам второй части}
+\subsection*{Ответы к задачам второй части.}\addcontentsline{toc}{subsection}{Ответы к задачам второй части}
 \end{document}
