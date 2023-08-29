@@ -504,7 +504,7 @@
 
 Партия заканчивается, быть может за исключением некоторого числа сложных и редких случаев, после двух последовательных пасов.
 
-Под территорией будем понимать все не занятые камнями пункты, полностью окружённые камнями одного цвета. Это определение дано не полгостью и включает в себя ещё ряд важных аспектов, о которых будет сказано при решении задач. По большей части понятие территории являтся договорным, т.е. если оба игрока согласны, что определённая часть доски является территорией одного игрока, то так и будет считаться в итоговом результате. Пока что достаточно интуитивного понимания территории.
+Под территорией будем понимать все не занятые камнями пункты, окружённые камнями одного цвета. Это определение дано не полностью и включает в себя ещё ряд важных аспектов, о которых будет сказано при решении задач. По большей части понятие территории являтся договорным, т.е. если оба игрока согласны, что определённая часть доски является территорией одного игрока, то так и будет считаться в итоговом результате. Пока что достаточно интуитивного понимания территории.
 
 \begin{figure}[h]
 \centering
@@ -684,6 +684,102 @@
 	\end{tikzpicture}
 \end{figure}
 
+Можно ли пойти в выделенный пункт?
+
+\noindent\textbf{5-I.} Ход чёрных.
+
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}
+		\draw[step=1, gray](2.5, 0) grid (12.5, 2.75);
+		\draw[black, ultra thick](2.5, 0) -- (12.5, 0);
+		\stone{5}{2}{black}
+		\stone{6}{2}{black}
+		\stone{7}{2}{black}
+		\stone{8}{2}{black}
+		\stone{9}{2}{black}
+		\stone{4}{1}{black}
+		\stone{6}{1}{white}
+		\stone{7}{1}{white}
+		\stone{8}{1}{white}
+		\stone{9}{1}{white}
+		\stone{10}{1}{black}
+		\stone{4}{0}{black}
+		\stone{5}{0}{white}
+		\stone{7}{0}{black}
+		\stone{8}{0}{white}
+		\stone{9}{0}{white}
+		\stone{10}{0}{black}
+        \territory{6}{0}{black}
+	\end{tikzpicture}
+\end{figure}
+
+\noindent\textbf{6-I.} Ход чёрных. В изначальной позиции чёрные сделали ход 1. Могут ли белые ответить в выделенный пункт?
+
+
+\begin{figure}[h!]
+\centering
+
+\begin{subfigure}{0.4\textwidth}
+	\centering
+	\begin{tikzpicture}
+		\draw[step=1, gray](4.5, 6.5) grid (11.5, 13.5);
+		\stone{8}{12}{white}
+		\stone{9}{12}{white}
+		\stone{6}{11}{white}
+		\stone{7}{11}{white}
+		\stone{9}{11}{white}
+		\stone{6}{10}{white}
+		\stone{7}{10}{black}
+		\stone{8}{10}{white}
+		\stone{9}{10}{black}
+		\stone{10}{10}{white}
+		\stone{6}{9}{white}
+		\stone{7}{9}{black}
+		\stone{8}{9}{black}
+		\stone{9}{9}{black}
+		\stone{10}{9}{white}
+		\stone{7}{8}{white}
+		\stone{8}{8}{white}
+		\stone{9}{8}{white}
+		\stone{10}{8}{white}
+	\end{tikzpicture}
+    \caption{Изначальная позиция.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.4\textwidth}
+	\centering
+	\begin{tikzpicture}
+		\draw[step=1, gray](4.5, 6.5) grid (11.5, 13.5);
+		\stone{8}{12}{white}
+		\stone{9}{12}{white}
+		\stone{6}{11}{white}
+		\stone{7}{11}{white}
+		\stone{9}{11}{white}
+		\stone{6}{10}{white}
+		\stone{7}{10}{black}
+		\territory{8}{10}{white}
+        \stone{8}{11}{black}
+        \stonelabel{8}{11}{white}{$1$}
+		\stone{9}{10}{black}
+		\stone{10}{10}{white}
+		\stone{6}{9}{white}
+		\stone{7}{9}{black}
+		\stone{8}{9}{black}
+		\stone{9}{9}{black}
+		\stone{10}{9}{white}
+		\stone{7}{8}{white}
+		\stone{8}{8}{white}
+		\stone{9}{8}{white}
+		\stone{10}{8}{white}
+	\end{tikzpicture}
+    \caption{После хода чёрных.}
+\end{subfigure}
+\end{figure}
+
+
+\newpage
+
 \newpage
 
 \section*{Пояснения и ответы к задачам первой части.}\addcontentsline{toc}{section}{Пояснения и ответы к задачам первой части}
@@ -745,6 +841,7 @@
 		\stone{5}{0}{black!15}
 		\stone{6}{0}{black}
 		\stone{7}{0}{black}
+        
 	\end{tikzpicture}
 \end{figure}
 
@@ -805,6 +902,162 @@
 	\end{tikzpicture}
 \end{figure}
 
+\noindent\textbf{5-I.} 
+
+Такой ход сделать нельзя, т.к. это самоубийственный ход (у этого камня и у камня 1 не останется дыханий). Притом белые камни имеют два дыхания, т.е. они не лишаются этим ходом.
+
+Замечание. В этой позиции можно серией 2-3 ходов снять все белые камни. К данной диаграмме мы ещё вернёмся в следующих главах.
+
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}
+		\draw[step=1, gray](2.5, 0) grid (12.5, 2.75);
+		\draw[black, ultra thick](2.5, 0) -- (12.5, 0);
+		\stone{5}{2}{black}
+		\stone{6}{2}{black}
+		\stone{7}{2}{black}
+		\stone{8}{2}{black}
+		\stone{9}{2}{black}
+		\stone{4}{1}{black}
+		\stone{6}{1}{white}
+		\stone{7}{1}{white}
+		\stone{8}{1}{white}
+		\stone{9}{1}{white}
+		\stone{10}{1}{black}
+		\stone{4}{0}{black}
+		\stone{5}{0}{white}
+		\stone{7}{0}{black}
+        \stonelabel{7}{0}{white}{1}
+		\stone{8}{0}{white}
+		\stone{9}{0}{white}
+		\stone{10}{0}{black}
+        \territory{6}{0}{black}
+        \territory{5}{1}{black}
+	\end{tikzpicture}
+\end{figure}
+
+\noindent\textbf{6-I.} Догадливый читатель легко догадывается, что в этой задаче спрашивается нание правила ко, коли уточнены несколько предыдущих ходов.
+
+
+
+
+\begin{figure}[h!]
+\centering
+
+\begin{subfigure}{0.4\textwidth}
+	\centering
+	\begin{tikzpicture}
+		\draw[step=1, gray](4.5, 6.5) grid (11.5, 13.5);
+		\stone{8}{12}{white}
+		\stone{9}{12}{white}
+		\stone{6}{11}{white}
+		\stone{7}{11}{white}
+		\stone{9}{11}{white}
+		\stone{6}{10}{white}
+		\stone{7}{10}{black}
+		\stone{8}{10}{white}
+		\stone{9}{10}{black}
+		\stone{10}{10}{white}
+		\stone{6}{9}{white}
+		\stone{7}{9}{black}
+		\stone{8}{9}{black}
+		\stone{9}{9}{black}
+		\stone{10}{9}{white}
+		\stone{7}{8}{white}
+		\stone{8}{8}{white}
+		\stone{9}{8}{white}
+		\stone{10}{8}{white}
+	\end{tikzpicture}
+    \caption{Изначальная позиция.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.4\textwidth}
+	\centering
+	\begin{tikzpicture}
+		\draw[step=1, gray](4.5, 6.5) grid (11.5, 13.5);
+		\stone{8}{12}{white}
+		\stone{9}{12}{white}
+		\stone{6}{11}{white}
+		\stone{7}{11}{white}
+		\stone{9}{11}{white}
+		\stone{6}{10}{white}
+		\stone{7}{10}{black}
+		\territory{8}{10}{white}
+        \stone{8}{11}{black}
+        \stonelabel{8}{11}{white}{$1$}
+		\stone{9}{10}{black}
+		\stone{10}{10}{white}
+		\stone{6}{9}{white}
+		\stone{7}{9}{black}
+		\stone{8}{9}{black}
+		\stone{9}{9}{black}
+		\stone{10}{9}{white}
+		\stone{7}{8}{white}
+		\stone{8}{8}{white}
+		\stone{9}{8}{white}
+		\stone{10}{8}{white}
+	\end{tikzpicture}
+    \caption{После хода чёрных.}
+\end{subfigure}
+
+\begin{subfigure}{0.4\textwidth}
+
+    \centering
+	\begin{tikzpicture}
+		\draw[step=1, gray](4.5, 6.5) grid (11.5, 13.5);
+		\stone{8}{12}{white}
+		\stone{9}{12}{white}
+		\stone{6}{11}{white}
+		\stone{7}{11}{white}
+		\stone{9}{11}{white}
+		\stone{6}{10}{white}
+		\stone{7}{10}{black!60}
+        \stonelabel{7}{10}{white}{$\times$}
+		\stone{8}{10}{white}
+        \stone{8}{11}{black!60}
+		\stone{9}{10}{black!60}
+        \stonelabel{9}{10}{white}{$\times$}
+		\stone{10}{10}{white}
+		\stone{6}{9}{white}
+		\stone{7}{9}{black!60}
+        \stonelabel{7}{9}{white}{$\times$}
+		\stone{8}{9}{black!60}
+        \stonelabel{8}{9}{white}{$\times$}
+		\stone{9}{9}{black!60}
+        \stonelabel{9}{9}{white}{$\times$}
+		\stone{10}{9}{white}
+		\stone{7}{8}{white}
+		\stone{8}{8}{white}
+		\stone{9}{8}{white}
+		\stone{10}{8}{white}
+	\end{tikzpicture}
+    \caption{Взятие белых.}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.4\textwidth}
+    \centering
+	\begin{tikzpicture}
+		\draw[step=1, gray](4.5, 6.5) grid (11.5, 13.5);
+		\stone{8}{12}{white}
+		\stone{9}{12}{white}
+		\stone{6}{11}{white}
+		\stone{7}{11}{white}
+		\stone{9}{11}{white}
+		\stone{6}{10}{white}
+		\stone{8}{10}{white}
+		\stone{10}{10}{white}
+		\stone{6}{9}{white}
+		\stone{10}{9}{white}
+		\stone{7}{8}{white}
+		\stone{8}{8}{white}
+		\stone{9}{8}{white}
+		\stone{10}{8}{white}
+	\end{tikzpicture}
+    \caption{После взятия белых.}
+\end{subfigure}
+\end{figure}
+
+Поначалу некоторым может показаться, что, совершив ответное взятие, белые нарушат правило ко, однако заметим, что выделенные крестиком камни тоже должны уйти с доски после хода белых, поэтому позиция не повторится. (Конечно, подразумевается в условии задачи, что до рассматриваемой ситуации на доске токой конфигурации камней ещё не было.)
 
 \newpage
 
