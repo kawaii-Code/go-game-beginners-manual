@@ -82,10 +82,6 @@
 г. Ростов-на-Дону, 2023
 \end{center}
 
-\newpage
-\thispagestyle{empty}
-\tableofcontents
-
 
 \newpage
 
@@ -736,7 +732,7 @@
 	\end{tikzpicture}
 \end{figure}
 
-\noindent\textbf{6-I.} Ход чёрных. В изначальной позиции чёрные сделали ход 1. Могут ли белые ответить в выделенный пункт?
+\noindent\textbf{6-I.} ЗАДАЧА НЕПРАВИЛЬНАЯ. Ход чёрных. В изначальной позиции чёрные сделали ход 1. Могут ли белые ответить в выделенный пункт?
 
 
 \begin{figure}[h!]
@@ -799,6 +795,120 @@
 \end{subfigure}
 \end{figure}
 
+
+\noindent\textbf{7-I.} Ход чёрных. Могут ли чёрные взять белый камень?
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+		\draw[step=1, gray](0, 0) grid (1.5, 2.5);
+        \draw[black, ultra thick](0, 0) -- (0, 2.5);
+        \draw[black, ultra thick](0, 0) -- (1.5, 0);
+		\stone{0}{1}{black}
+		\stone{0}{0}{white}
+	\end{tikzpicture}
+\end{figure}
+
+\noindent\textbf{8-I.} Ход белых.
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+		\draw[step=1, gray](0, 6.5) grid (8.5, 11.5);
+		\draw[black, ultra thick](0, 6.5) -- (0, 11.5);
+		\stone{4}{10}{white}
+		\stone{5}{10}{white}
+		\stone{2}{9}{black}
+		\stone{3}{9}{white}
+		\stone{4}{9}{black}
+		\stone{5}{9}{black}
+		\stone{6}{9}{white}
+		\stone{3}{8}{black}
+		\stone{4}{8}{white}
+		\stone{6}{8}{white}
+	\end{tikzpicture}
+\end{figure}
+
+\newpage
+
+\noindent\textbf{9-I.} Та же позиция, ход чёрных. Могут ли чёрные спасти свои камни?
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+		\draw[step=1, gray](0, 6.5) grid (8.5, 11.5);
+		\draw[black, ultra thick](0, 6.5) -- (0, 11.5);
+		\stone{4}{10}{white}
+		\stone{5}{10}{white}
+		\stone{2}{9}{black}
+		\stone{3}{9}{white}
+		\stone{4}{9}{black}
+		\stone{5}{9}{black}
+		\stone{6}{9}{white}
+		\stone{3}{8}{black}
+		\stone{4}{8}{white}
+		\stone{6}{8}{white}
+	\end{tikzpicture}
+\end{figure}
+
+\noindent\textbf{10-I.} Ход чёрных. Потребуются 3 хода.
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+		\draw[step=1, gray](0, -0.5) grid (4.5, 5.5);
+		\draw[black, ultra thick](0, 5.5) -- (0, -0.5);
+		\stone{2}{4}{black}
+		\stone{1}{3}{white}
+		\stone{2}{3}{white}
+		\stone{3}{3}{black}
+		\stone{1}{2}{black}
+		\stone{2}{2}{white}
+		\stone{3}{2}{black}
+		\stone{2}{1}{black}
+	\end{tikzpicture}
+\end{figure}
+
+\noindent\textbf{11-I.} Ход чёрных. Потребуются 2 хода.
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+		\draw[step=1, gray](0, 1.5) grid (3.5, 6.5);
+		\draw[black, ultra thick](0, 6.5) -- (0, 1.5);
+		\stone{1}{5}{black}
+		\stone{0}{4}{white}
+		\stone{1}{4}{white}
+		\stone{2}{4}{black}
+		\stone{1}{3}{black}
+	\end{tikzpicture}
+\end{figure}
+
+\newpage
+
+\noindent\textbf{12-I.} Ход белых. Могут ли белые взять группу чёрных?
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+		\draw[step=1, gray](10.5, 14.5) grid (18, 18);
+		\draw[black, ultra thick](18, 18) -- (18, 14.5);
+		\draw[black, ultra thick](18, 18) -- (10.5, 18);
+		\stone{12}{18}{white}
+		\stone{13}{18}{black}
+		\stone{15}{18}{black}
+		\stone{17}{18}{black}
+		\stone{18}{18}{white}
+		\stone{12}{17}{white}
+		\stone{13}{17}{black}
+		\stone{14}{17}{black}
+		\stone{15}{17}{black}
+		\stone{16}{17}{black}
+		\stone{17}{17}{black}
+		\stone{18}{17}{white}
+		\stone{12}{16}{white}
+		\stone{13}{16}{white}
+		\stone{14}{16}{white}
+		\stone{15}{16}{white}
+		\stone{16}{16}{white}
+		\stone{17}{16}{white}
+		\stone{18}{16}{white}
+	\end{tikzpicture}
+\end{figure}
 
 \newpage
 
@@ -1127,4 +1237,8 @@
 \newpage
 
 \subsection*{Основы стратегии.}\addcontentsline{toc}{subsection}{Основы стратегии}
+
+\newpage
+\thispagestyle{empty}
+\tableofcontents
 \end{document}
